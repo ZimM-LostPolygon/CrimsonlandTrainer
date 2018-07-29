@@ -134,7 +134,7 @@ namespace CrimsonlandTrainer.Game {
         [PerkDescription("Greater Regeneration", dependencyPerk: Regeneration)]
         GreaterRegeneration = 43,
 
-        [PerkDescription("Breathing Room")]
+        [PerkDescription("Breathing Room", multiPickLimit: -1)]
         BreathingRoom = 44,
 
         [PerkDescription("Death Clock")]
@@ -167,7 +167,7 @@ namespace CrimsonlandTrainer.Game {
         [PerkDescription("Tough Reloader")]
         ToughReloader = 54,
 
-        [PerkDescription("Lifeline 50-50")]
+        [PerkDescription("Lifeline 50-50", multiPickLimit: -1)]
         LifelineFiftyFifty = 55,
     }
 

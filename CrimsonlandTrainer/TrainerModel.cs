@@ -17,10 +17,10 @@ namespace CrimsonlandTrainer
     class TrainerModel : BindableBase
     {
         private readonly DispatcherTimer _checkGameProcessTimer;
+        private readonly StringBuilder _debugEngineOutputBuffer = new StringBuilder();
         private Process _gameProcess;
         private GameTrainerDebugger _debugger;
         private GameTrainerDebuggerThread _debuggerThread;
-        private StringBuilder _debugEngineOutputBuffer = new StringBuilder();
 
         public int CurrentPerkIndex { get; private set; } = 0;
         public int CurrentWeaponIndex { get; private set; } = 0;
@@ -104,7 +104,8 @@ namespace CrimsonlandTrainer
                     Process gameProcess =
                         Process.GetProcesses()
                             .FirstOrDefault(
-                                process => process.ProcessName == "Crimsonland" ||
+                                process =>
+                                    process.ProcessName == "Crimsonland" ||
                                     process.ProcessName == "Crimsonland-D3D11");
 
                     if (gameProcess != null) {
@@ -166,10 +167,6 @@ namespace CrimsonlandTrainer
                 _debugger?.Dispose();
                 return false;
             });
-
-            if (_debuggerThread?.Thread?.IsAlive == true) {
-                //_debuggerThread.Thread.Join();
-            }
 
             Status = TrainerStatus.GameProcessNotFound;
         }
